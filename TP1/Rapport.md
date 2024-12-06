@@ -497,17 +497,4 @@ DDORA IP 10.1.1.247/24 GW 10.1.1.210
 
 🌞 **Wireshark !**
 
-- capturez cette course :d
-- je veux une capture wireshark `race.pcap` qui montre les deux serveurs DHCP qui répondent
-
-> *Si on met vraiment l'attaque en place et qu'on veut gagner la course, on n'hésite pas à mettre un coup de batte dans les jambes du concurrent : essayer de ralentir le serveur DHCP légitime. On abordera ça plus tard maybe, je vous invite fort à faire des recherches sur le sujet : comment ralentir une machine qu'on peut joindre sur le réseau, et spécifiquement un serveur DHCP ici. Aussi on remettra en place l'attaque dans des scénarios où on usurpe aussi l'identité du routeur.*
-
-## 3. BONUS : DHCP starvation
-
-Une attaque très débile et simple à mettre en place pour **DOS l'accès à un LAN** s'il n'y a pas de protections particulières. **C'est naze, mais c'est là** :d
-
-Le principe est simple : **faire de multiples échanges DORA avec le serveur DHCP pour récupérer toutes les IP disponibles dans le réseau.**
-
-On usurpe une adresse MAC (qu'elle existe ou non), on demande une adresse IP, on la récupère (merci). On répète l'opération avec une nouvelle fake adresse MAC, une nouvelle IP (merci). Etc. Jusqu'à épuiser toutes les adresses de la range.
-
-Il existe des tools pour faire ça, vous pouvez aussi essayer (recommandé) de le **coder vous-mêmes avec Scapy** (une dinguerie cette lib) : on peut forger à peu près tout et n'importe quoi comme trame, et très facilement, avec Scapy.
+cf race.pcapng
