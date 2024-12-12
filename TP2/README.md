@@ -197,7 +197,7 @@ MTU         : 1500
 
 🌞 **Wireshark it !**
 
-[DORA](/TP2/DORA_TP2.pcap)
+![DORA](/TP2/DORA_TP2.pcapng)
 
 # III. ARP
 
@@ -213,7 +213,7 @@ MTU         : 1500
 
 🌞 **Capturez l'échange ARP avec Wireshark**
 
-[ARP](/TP2/ARP.pcap)
+![ARP](ARP.pcapng)
 
 ## 2. ARP poisoning
 
@@ -244,7 +244,7 @@ sudo arpspoof -r -t 10.2.1.10 10.2.1.254
 
 🌞 **Capture Wireshark `arp_mitm.pcap`**
 
-![ARP mitm](TP2/arp_mitm.pcap)
+![ARP mitm](arp_mitm.pcapng)
 
 🌞 **Réaliser la même attaque avec Scapy**
 
