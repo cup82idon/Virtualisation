@@ -24,7 +24,7 @@ PC1> ping 10.3.2.2
 
 🌞 **Capture Wireshark `ping_partie1`**
 
-cf ping_partie1.pcapng
+[Ping partie 1](ping_partie1.pcapng)
 
 🌞 **Afficher les adresses MAC des routeurs**
 
