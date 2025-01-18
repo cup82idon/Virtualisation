@@ -538,3 +538,4 @@ Ack nb >> 3424035478
 [cmeyer@kali ~]$ aclient_loop: send disconnect: Broken pipe
 ~~~
 
+[TCP RST](tcp_rst.pcapng)
