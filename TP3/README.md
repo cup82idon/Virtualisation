@@ -507,7 +507,7 @@ send(dns_request)
 print(answer[DNS].summary())
 ~~~
 
-cf dns_flood
+[DNS flood](dns_flood.pcapng)
 
 ## 2. TCP
 
